@@ -18,7 +18,7 @@ public class UserDAO {
         //executing SQLquery
 
         while(res.next()){
-            String e = res.getString(1);  //4
+            String e = res.getString(1);
             if (e.equals(email))
                 return true;
         }

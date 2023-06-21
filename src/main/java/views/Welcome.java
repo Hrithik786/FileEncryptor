@@ -4,6 +4,7 @@ import DAO.UserDAO;
 import model.User;
 import service.GenerateOTP;
 import service.SendOTPService;
+import service.UserService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class Welcome {
     public void welcomeScreen(){
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Welcome to File Hider");
+        //do {
         System.out.println("1. Login\n2. SignUp\n3. Exit");
         int choice = 0;
         try{
@@ -28,6 +30,7 @@ public class Welcome {
             case 2-> signUp();
             case 3-> System.exit(0);
         }
+        //}while (choice!=3);
     }
 
     private void signUp(){
@@ -43,19 +46,22 @@ public class Welcome {
         SendOTPService.sendOTP(email,genOTP);
 
         System.out.println("Enter the OTP");
-        String otp =sc.nextLine();
+        String otp = sc.nextLine();
 
         if (otp.equals(genOTP)){
-            User user = new User(name,email);
-            try {
-                UserDAO.saveUser(user);
-            } catch (SQLException e) {
-                e.printStackTrace();
+            User user = new User(name, email);
+            int response = UserService.saveUser(user);
+            switch (response){
+                case 1-> System.out.println("User Registered");
+                case 0-> System.out.println("User Already Exists");
+                //01
+                //10
             }
-        }else System.out.println("Wrong OTP");
+        }
     }
     private void login() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Email: ");
         String email = sc.nextLine();
         try{
             if (UserDAO.isExists(email)){
