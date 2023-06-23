@@ -17,7 +17,6 @@ public class Welcome {
     public void welcomeScreen(){
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Welcome to File Encryptor");
-        //do {
         System.out.println("1. Login\n2. SignUp\n3. Exit");
         int choice = 0;
         try{
@@ -30,7 +29,6 @@ public class Welcome {
             case 2-> signUp();
             case 3-> System.exit(0);
         }
-        //}while (choice!=3);
     }
 
     private void signUp(){
@@ -54,8 +52,6 @@ public class Welcome {
             switch (response){
                 case 1-> System.out.println("User Registered");
                 case 0-> System.out.println("User Already Exists");
-                //01
-                //10
             }
         }
     }

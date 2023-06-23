@@ -27,7 +27,7 @@ public class UserView {
                 case 1-> {
                     try {
                         List<Data> files = DataDAO.getAllFiles(this.email);
-                        System.out.println("ID- File Name");
+                        System.out.println("ID - File Name");
                         for (Data file: files){
                             System.out.println(file.getId()+" - "+file.getFilename());
                         }
@@ -39,6 +39,7 @@ public class UserView {
                     System.out.println("Enter The File Path");
                     String path = sc.nextLine();
                     File f = new File(path);
+
                     Data file = new Data(0,f.getName(),path,this.email);
                     try {
                         DataDAO.hideFile(file);
@@ -53,7 +54,7 @@ public class UserView {
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("ID- File Name");
+                    System.out.println("ID - File Name");
                     for (Data file: files){
                         System.out.println(file.getId()+" - "+file.getFilename());
                     }

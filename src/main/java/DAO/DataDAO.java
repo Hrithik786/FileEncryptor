@@ -33,7 +33,7 @@ public static int hideFile(Data file)throws SQLException, IOException {
             "insert into data(name,path,email,bin_data)values(?,?,?,?) ");
     ps.setString(1,file.getFilename());
     ps.setString(2,file.getPath());
-    ps.setString(3, file.getEmail());
+    ps.setString(3,file.getEmail());
 
     File f = new File(file.getPath());
     FileReader fr = new FileReader(f);
@@ -46,15 +46,20 @@ public static int hideFile(Data file)throws SQLException, IOException {
 }
 public static void unHide(int id)throws SQLException,IOException{
     Connection connection = MyConnection.getConnection();
+    //fetching connection
     PreparedStatement ps = connection.prepareStatement(
             "select path, bin_data from data where id = ?");
     ps.setInt(1,id);
     ResultSet rs = ps.executeQuery();
+    //firing Query
     rs.next();
     String path = rs.getString("path");
     Clob c = rs.getClob("bin_data");
+    //fetching file from bin_data
 
     Reader r = c.getCharacterStream();
+    //reading a file
+
     FileWriter fw = new FileWriter(path);
 
     int i;

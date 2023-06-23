@@ -9,6 +9,5 @@ public class Main {
     public static void main(String[] args) {
         Welcome c = new Welcome();
         c.welcomeScreen();
-        //testing
     }
 }
