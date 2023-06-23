@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Welcome {
     public void welcomeScreen(){
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Welcome to File Hider");
+        System.out.println("Welcome to File Encryptor");
         //do {
         System.out.println("1. Login\n2. SignUp\n3. Exit");
         int choice = 0;
@@ -72,7 +72,8 @@ public class Welcome {
                 String otp = sc.nextLine();
 
                 if (otp.equals(genOTP)){
-                    System.out.println("Welcome22");
+                    new UserView(email).home();
+
                 }else {
                     System.out.println("Wrong OTP");
                 }
